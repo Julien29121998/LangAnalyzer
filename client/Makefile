@@ -4,4 +4,4 @@ dockerclient:
 
 run:
 	echo "run test"
-	docker exec -it calc_client ruby controller.rb "input.txt" 8470 8971 8972 8974
+	docker exec -it calc_client ruby controller.rb "sample.txt" 8470 8971 8972 8974

@@ -104,7 +104,7 @@ class Controller
 
     def obtainResults
         @semaphore2.acquire(1000)
-        @results
+        @results.sort_by{|k,v| v}.reverse.to_h
     end
 
     def endall
@@ -121,5 +121,15 @@ control.workRegression(freq_results[:freq])
 reg_results = control.obtainResults
 control.stopWorkers
 control.endall
+puts "FREQUENCY ANALYSIS"
+puts "\n"
 puts freq_results.to_json
+puts "\n"
+puts "POSSIBLE LANGUAGES"
+puts "\n"
 puts reg_results.to_json
+puts "\n"
+puts "MOST LIKELY"
+puts "\n"
+puts reg_results.to_a[0]
+puts "\n"
