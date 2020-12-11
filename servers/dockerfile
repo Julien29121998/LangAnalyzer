@@ -1,0 +1,4 @@
+FROM php:7.2-apache
+WORKDIR /usr/src/myapp
+RUN apt-get update && apt-get -qq -y install nano netcat
+CMD [ "php", "./index.php" ]

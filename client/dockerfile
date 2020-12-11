@@ -1,0 +1,11 @@
+FROM rabbitmq:3-management
+
+WORKDIR /project
+
+RUN apt-get update && apt-get -qq -y install curl nano netcat
+RUN apt-get install -y ruby-dev
+RUN gem install bunny
+RUN gem install concurrent-ruby
+RUN gem install httparty
+
+EXPOSE 15672
