@@ -1,0 +1,23 @@
+<h>LangAnalyzer</h>
+<i>BENARD Julien</i>
+<p>Tool to detect in which language a text is written. Also a proof of concept to demonstrate a use case of RabbitMQ.</p>
+
+<strong>SETUP</strong>
+<p>If on Linux, use:</p>
+<code>make docker</code>
+<p>Or just go in the client and server folder and run:</p>
+<code>make dockerclient</code>
+<p>and</p>
+<code>make dockerserv</code>
+<p>respectively</p>
+<p>Or just build the docker containers by hand, with the help of the makefiles</p>
+
+<strong>USE</strong>
+<p>Simple use: paste some long text in input.txt and run:</p>
+<code>make run_on_input</code>
+<p>or just</p>
+<code>make example</code>
+<p>to run on the default example</p>
+<p>Manual use: fill "./server/sample.txt" with your text and:</p>
+<code>	docker exec -it calc_client ruby controller.rb "sample.txt" 8470 8971 8972 8974 </code>
+
