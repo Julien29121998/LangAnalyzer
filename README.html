@@ -10,7 +10,17 @@
 <p>and</p>
 <code>make dockerserv</code>
 <p>respectively</p>
-<p>Or just build the docker containers by hand, with the help of the makefiles</p>
+<p>Or just build the docker containers by hand, with the help of the content of the makefiles:</p>
+<code>
+cd servers
+docker build -t srv . > build.log
+docker run -d -p 8470:80 --name srv -v <b>[YOUR CURRENT DIRECTORY]</b>:/var/www/html php:7.2-apache && docker rename srv srv1
+docker run -d -p 8971:80 --name srv -v <b>[YOUR CURRENT DIRECTORY]</b>:/var/www/html php:7.2-apache && docker rename srv srv2
+docker run -d -p 8972:80 --name srv -v <b>[YOUR CURRENT DIRECTORY]</b>:/var/www/html php:7.2-apache && docker rename srv srv3
+docker run -d -p 8974:80 --name srv -v <b>[YOUR CURRENT DIRECTORY]</b>:/var/www/html php:7.2-apache && docker rename srv srv4
+cd client
+docker build -t jbenard/tpcalc . > build.log && docker run -dit -v <b>[YOUR CURRENT DIRECTORY]</b>:/project -p 15672:15672 --name calc_client jbenard/tpcalc
+</code>
 
 <strong>USE</strong>
 <p>Simple use: paste some long text in input.txt and run:</p>
@@ -18,6 +28,6 @@
 <p>or just</p>
 <code>make example</code>
 <p>to run on the default example</p>
-<p>Manual use: fill "./server/sample.txt" with your text and:</p>
+<p>Manual use: fill "sample.txt" with your text and:</p>
 <code>	docker exec -it calc_client ruby controller.rb "sample.txt" 8470 8971 8972 8974 </code>
 
