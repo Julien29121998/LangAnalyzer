@@ -48,7 +48,6 @@ unless ARGV.size == 0
               :headers => {'Content-Type' => 'application/json'})
             if(res.code==200)
               result = JSON.parse(res.body) 
-              puts result
               answer = {:type=>"compare", :lang =>lang, :similarity=>result["r2"]}
             else
               answer = {:type=>"compare", :lang =>lang, :similarity=>0}
